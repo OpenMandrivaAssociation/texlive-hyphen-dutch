@@ -47,12 +47,12 @@ according to their meaning.
 %install
 mkdir -p %{buildroot}%{_texmf_language_dat_d}
 cat > %{buildroot}%{_texmf_language_dat_d}/hyphen-dutch <<EOF
-%% from hyphen-dutch:
+\%\% from hyphen-dutch:
 dutch loadhyph-nl.tex
 EOF
 mkdir -p %{buildroot}%{_texmf_language_def_d}
 cat > %{buildroot}%{_texmf_language_def_d}/hyphen-dutch <<EOF
-%% from hyphen-dutch:
+\%\% from hyphen-dutch:
 \addlanguage{dutch}{loadhyph-nl.tex}{}{2}{2}
 EOF
 mkdir -p %{buildroot}%{_texmf_language_lua_d}
