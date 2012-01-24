@@ -5,8 +5,8 @@
 # catalog-license undef
 # catalog-version undef
 Name:		texlive-hyphen-dutch
-Version:	20111103
-Release:	2
+Version:	20120124
+Release:	1
 Summary:	Dutch hyphenation patterns
 Group:		Publishing
 URL:		http://tug.org/texlive
@@ -47,14 +47,16 @@ according to their meaning.
 %install
 mkdir -p %{buildroot}%{_texmf_language_dat_d}
 cat > %{buildroot}%{_texmf_language_dat_d}/hyphen-dutch <<EOF
-\%\% from hyphen-dutch:
+\%% from hyphen-dutch:
 dutch loadhyph-nl.tex
 EOF
+perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_dat_d}/hyphen-dutch
 mkdir -p %{buildroot}%{_texmf_language_def_d}
 cat > %{buildroot}%{_texmf_language_def_d}/hyphen-dutch <<EOF
-\%\% from hyphen-dutch:
+\%% from hyphen-dutch:
 \addlanguage{dutch}{loadhyph-nl.tex}{}{2}{2}
 EOF
+perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_def_d}/hyphen-dutch
 mkdir -p %{buildroot}%{_texmf_language_lua_d}
 cat > %{buildroot}%{_texmf_language_lua_d}/hyphen-dutch <<EOF
 -- from hyphen-dutch:
