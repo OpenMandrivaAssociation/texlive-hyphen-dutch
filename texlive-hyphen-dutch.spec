@@ -69,3 +69,25 @@ cat > %{buildroot}%{_texmf_language_lua_d}/hyphen-dutch <<EOF
 		hyphenation = 'hyph-nl.hyp.txt',
 	},
 EOF
+
+
+%changelog
+* Mon Jun 11 2012 Paulo Andrade <pcpa@mandriva.com.br> 20120611-1
++ Revision: 804691
+- Update to latest release.
+
+* Tue Jan 24 2012 Paulo Andrade <pcpa@mandriva.com.br> 20120124-1
++ Revision: 767535
+- Add workaround to rpm bug that broke hyphenation files
+
+* Wed Jan 11 2012 Paulo Andrade <pcpa@mandriva.com.br> 20111103-2
++ Revision: 759906
+- Rebuild to reduce used resources
+
+* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 20111103-1
++ Revision: 718647
+- texlive-hyphen-dutch
+- texlive-hyphen-dutch
+- texlive-hyphen-dutch
+- texlive-hyphen-dutch
+
