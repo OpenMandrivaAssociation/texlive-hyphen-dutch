@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-hyphen-dutch
 Version:	20120611
-Release:	3
+Release:	4
 Summary:	Dutch hyphenation patterns
 Group:		Publishing
 URL:		http://tug.org/texlive
