@@ -1,11 +1,11 @@
 Name:		texlive-hyphen-dutch
-Version:	20190406
+Version:	58609
 Release:	1
 Summary:	Dutch hyphenation patterns
 Group:		Publishing
 URL:		http://tug.org/texlive
 License:	http://www.tug.org/texlive/LICENSE.TL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hyphen-dutch.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hyphen-dutch.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -19,12 +19,12 @@ and don't hyphenate words that have different hyphenations
 according to their meaning.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -36,7 +36,7 @@ according to their meaning.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0
+%autosetup -p1 -c
 
 %build
 
