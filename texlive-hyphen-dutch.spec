@@ -1,6 +1,6 @@
 Name:		texlive-hyphen-dutch
 Version:	58609
-Release:	1
+Release:	2
 Summary:	Dutch hyphenation patterns
 Group:		Publishing
 URL:		http://tug.org/texlive
