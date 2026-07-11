@@ -1,70 +1,24 @@
-Name:		texlive-hyphen-dutch
-Version:	73410
-Release:	2
-Summary:	Dutch hyphenation patterns
+%global tl_name hyphen-dutch
+%global tl_revision 79618
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.1
+Release:	%{tl_revision}.1
+Summary:	Dutch hyphenation patterns.
 Group:		Publishing
-URL:		https://tug.org/texlive
-License:	http://www.tug.org/texlive/LICENSE.TL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hyphen-dutch.r%{version}.tar.xz
+URL:		https://www.ctan.org/tex-archive/language/hyphenation/nehyph.tex
+License:	lppl1
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/hyphen-dutch.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-hyphen-base
-Requires:	texlive-hyph-utf8
+BuildSystem:	texlive
+Requires:	texlive(hyph-utf8)
+Requires:	texlive(hyphen-base)
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-Hyphenation patterns for Dutch in T1/EC and UTF-8 encodings.
-These patterns don't handle cases like 'menuutje' > 'menu-tje',
-and don't hyphenate words that have different hyphenations
-according to their meaning.
+Hyphenation patterns for Dutch in T1/EC and UTF-8 encodings. These
+patterns don't handle cases like 'menuutje' > 'menu-tje', and don't
+hyphenate words that have different hyphenations according to their
+meaning.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/*
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/*/*
-%_texmf_language_dat_d/hyphen-dutch
-%_texmf_language_def_d/hyphen-dutch
-%_texmf_language_lua_d/hyphen-dutch
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex %{buildroot}%{_texmfdistdir}
-
-mkdir -p %{buildroot}%{_texmf_language_dat_d}
-cat > %{buildroot}%{_texmf_language_dat_d}/hyphen-dutch <<EOF
-\%% from hyphen-dutch:
-dutch loadhyph-nl.tex
-EOF
-perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_dat_d}/hyphen-dutch
-mkdir -p %{buildroot}%{_texmf_language_def_d}
-cat > %{buildroot}%{_texmf_language_def_d}/hyphen-dutch <<EOF
-\%% from hyphen-dutch:
-\addlanguage{dutch}{loadhyph-nl.tex}{}{2}{2}
-EOF
-perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_def_d}/hyphen-dutch
-mkdir -p %{buildroot}%{_texmf_language_lua_d}
-cat > %{buildroot}%{_texmf_language_lua_d}/hyphen-dutch <<EOF
--- from hyphen-dutch:
-	['dutch'] = {
-		loader = 'loadhyph-nl.tex',
-		lefthyphenmin = 2,
-		righthyphenmin = 2,
-		synonyms = {  },
-		patterns = 'hyph-nl.pat.txt',
-		hyphenation = 'hyph-nl.hyp.txt',
-	},
-EOF
